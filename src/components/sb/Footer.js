@@ -9,7 +9,7 @@ export default function Footer({ blok }) {
   return (
     <footer
       {...storyblokEditable(blok)}
-      className="w-full bg-blue-900 text-white py-10 mt-12"
+      className="w-full bg-blue-50 text-white py-10 mt-12"
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8 justify-between items-start">
         <div className="flex flex-col gap-6 md:w-1/3 w-full text-black">
