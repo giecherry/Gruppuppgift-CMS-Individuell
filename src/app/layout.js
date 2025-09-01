@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoryBlokProvider from "@/components/StoryBlokProvider";
-import Header from "@/components/Header";
+import Header from "@/components/sb/Header";
 import Footer from "@/components/Footer";
 
 //TO DO: Layout for pages + detail pages
