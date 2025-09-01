@@ -1,87 +1,65 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable } from "@storyblok/react/rsc";
+import LinkGrid from "./LinkGrid";
+import Teaser from "./Teaser";
 
 export default function Header({ blok }) {
-function A({ href = '/', children, className = '' }) {
-  const isExternal = /^https?:\/\//i.test(href);
-  return isExternal
-    ? <a href={href} className={className} rel="noopener noreferrer">{children}</a>
-    : <Link href={href} className={className}>{children}</Link>;
-}
-
-function CartIcon(props) {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" strokeWidth="1.6"
-      strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <circle cx="9" cy="20" r="1" />
-      <circle cx="18" cy="20" r="1" />
-      <path d="M2 3h3l3.6 12.59a2 2 0 0 0 2 1.41h7.7a2 2 0 0 0 2-1.6L22 7H6" />
-    </svg>
-  );
-}
-
-
-  // --- Bygg navigation ---
-  // 1) Stöd för din nuvarande setup: tre separata Link-fält
-  const field = (name) => blok[name] ?? blok[name?.toLowerCase()];
-  const hardcodedNav = [
-    { label: 'Products',  href: field('Products')?.cached_url  || field('Products')?.url },
-    { label: 'About',     href: field('About')?.cached_url     || field('About')?.url },
-  ].filter(x => !!x.href);
-
-  // 2) Stöd för framtida/alternativ struktur: repeatable "nav" med {label, link}
-  const listNav = Array.isArray(blok.nav)
-    ? blok.nav.map(it => ({
-        label: it?.label,
-        href: it?.link?.cached_url || it?.link?.url
-      })).filter(x => !!x.href && !!x.label)
-    : [];
-
-  const nav = listNav.length ? listNav : hardcodedNav;
-
   return (
     <header
       {...storyblokEditable(blok)}
-      style={{ position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid #e5e7eb', background: '#f6f9ff' }}
+      className="sticky top-0 z-50 border-b border-gray-200 bg-blue-50"
     >
-      <div style={{ maxWidth: 1120, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', gap: 24, padding: '0 16px' }}>
-        {/* Brand */}
-        <A href="/">
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            {logo && <img src={logo} alt={title} width={24} height={24} style={{ objectFit: 'contain' }} />}
-            <strong>{title}</strong>
-          </span>
-        </A>
+      <div className="max-w-5xl mx-auto flex flex-col gap-2 md:flex-row items-center px-4 py-2">
+        {/* Logo */}
+        {blok.logo && blok.logo.filename && (
+          <img
+            src={blok.logo.filename}
+            alt="Logo"
+            width={40}
+            height={40}
+            className="object-contain mr-4"
+          />
+        )}
 
-        {/* Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          {nav.map((item, i) => (
-            <A key={`${item.label}-${i}`} href={item.href}>
-              <span style={{ fontSize: 14 }}>{item.label}</span>
-            </A>
-          ))}
-        </nav>
+        {/* Navigation (LinkGrid) */}
+        {blok.linkgrid && (
+          <nav className="flex-1">
+            <LinkGrid blok={blok.linkgrid} />
+          </nav>
+          
+        )}
 
-        {/* Right */}
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16 }}>
-          {searchBarBlok && <SearchBarInline placeholder={searchBarBlok.placeholder || 'Search'} />}
-
-          <A href="/cart">
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              {bagAsset
-                ? <img src={bagAsset.filename} alt="Cart" width={18} height={18} />
-                : <CartIcon />
-              }
-              <span style={{ fontSize: 14 }}>{cartCount}</span>
-            </span>
-          </A>
+        {/* Search bar placeholder */}
+        <div className="ml-auto flex items-center gap-4">
+          <input
+            type="text"
+            placeholder={
+              blok.search_placeholder ||
+              "Search..."
+            }
+            className="px-3 py-2 rounded border border-gray-300 focus:outline-none"
+            disabled
+          />
+          {/* Shopping cart placeholder */}
+          <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="9" cy="20" r="1" />
+              <circle cx="18" cy="20" r="1" />
+              <path d="M2 3h3l3.6 12.59a2 2 0 0 0 2 1.41h7.7a2 2 0 0 0 2-1.6L22 7H6" />
+            </svg>
+          </div>
         </div>
       </div>
     </header>
   );
 }
-
-

@@ -11,6 +11,7 @@ import DoesNotExist from "@/components/sb/DoesNotExist";
 import Hero from "@/components/sb/Hero";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
+import Header from "@/components/sb/Header";
 
 export const components = {
   // Add your components here
@@ -22,6 +23,7 @@ export const components = {
   doesNotExist: DoesNotExist,
   link: Link,
   footer: Footer,
+  header: Header,
 };
 
 /**
