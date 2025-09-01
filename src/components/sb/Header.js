@@ -2,7 +2,6 @@
 
 import { storyblokEditable } from "@storyblok/react/rsc";
 import LinkGrid from "./LinkGrid";
-import Teaser from "./Teaser";
 
 export default function Header({ blok }) {
   return (
