@@ -6,6 +6,8 @@ import Feature from '@/components/sb/Feature';
 import Grid from '@/components/sb/Grid';
 import DoesNotExist from '@/components/sb/DoesNotExist';
 import Hero from '@/components/sb/Hero';
+import Header from '@/components/sb/Header';
+
 export const components = {
     // Add your components here
     page: Page,
@@ -13,7 +15,8 @@ export const components = {
     grid: Grid,
     teaser: Teaser,
     hero: Hero,
-    doesNotExist: DoesNotExist
+    doesNotExist: DoesNotExist,
+    header: Header
   };
 
   /**
