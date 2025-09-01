@@ -22,12 +22,12 @@ export default function Header({ blok }) {
         )}
 
         {/* Navigation (LinkGrid) */}
-        {blok.linkgrid && (
-          <nav className="flex-1">
-            <LinkGrid blok={blok.linkgrid} />
-          </nav>
-          
-        )}
+        {Array.isArray(blok.linkgrid) &&
+          blok.linkgrid.length > 0 && (
+            <nav className="flex-1">
+              <LinkGrid blok={blok.linkgrid[0]} />
+            </nav>
+          )}
 
         {/* Search bar placeholder */}
         <div className="ml-auto flex items-center gap-4">
