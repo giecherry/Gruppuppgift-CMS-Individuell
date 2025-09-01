@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import { storyblokEditable } from '@storyblok/react/rsc';
 
+export default function Header({ blok }) {
 function A({ href = '/', children, className = '' }) {
   const isExternal = /^https?:\/\//i.test(href);
   return isExternal
@@ -82,5 +82,6 @@ function CartIcon(props) {
       </div>
     </header>
   );
+}
 
 
