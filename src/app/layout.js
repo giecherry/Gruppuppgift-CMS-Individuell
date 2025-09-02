@@ -6,8 +6,8 @@ import "./globals.css";
 import StoryBlokProvider from "@/components/StoryBlokProvider";
 import Header from "@/components/sb/Header";
 import Footer from "@/components/sb/Footer";
+import Layout from "@/components/sb/Layout";
 
-//TO DO: Layout for pages + detail pages
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {children}
+          <Layout>{children}</Layout>
         </body>
       </html>
     </StoryBlokProvider>
