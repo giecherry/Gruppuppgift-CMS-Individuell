@@ -9,6 +9,7 @@ import Feature from "@/components/sb/Feature";
 import Grid from "@/components/sb/Grid";
 import DoesNotExist from "@/components/sb/DoesNotExist";
 import Hero from "@/components/sb/Hero";
+import Banner from "@/components/sb/Banner";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
@@ -24,6 +25,7 @@ export const components = {
   link: Link,
   footer: Footer,
   header: Header,
+  banner: Banner,
 };
 
 /**
