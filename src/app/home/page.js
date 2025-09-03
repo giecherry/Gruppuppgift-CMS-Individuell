@@ -17,7 +17,8 @@ export async function fetchData() {
     "cdn/stories/home",
     {
       version: "draft",
-      resolve_relations: "ProductList.products",
+      resolve_relations:
+        "ProductList.products,Hero2.products",
     }
   );
 }

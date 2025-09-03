@@ -16,6 +16,7 @@ import Header from "@/components/sb/Header";
 import ProductPage from "@/components/sb/ProductPage";
 import ProductCard from "@/components/sb/ProductCard";
 import ProductList from "@/components/sb/ProductList";
+import Hero2 from "@/components/sb/Hero2";
 
 export const components = {
   page: Page,
@@ -30,6 +31,7 @@ export const components = {
   Products: ProductPage,
   ProductCard: ProductCard,
   ProductList: ProductList,
+  Hero2: Hero2,
 };
 
 /**

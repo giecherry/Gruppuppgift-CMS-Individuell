@@ -33,7 +33,8 @@ async function fetchStory(sbApi, slug) {
       `cdn/stories/${slug}`,
       {
         version: "draft",
-        resolve_relations: "ProductList.products",
+        resolve_relations:
+          "ProductList.products,Hero2.products",
       }
     );
     return data;
@@ -44,7 +45,7 @@ async function fetchStory(sbApi, slug) {
         {
           version: "published",
           resolve_relations:
-            "ProductList.products",
+            "ProductList.products,Hero2.products",
         }
       );
       return data;
