@@ -1,5 +1,5 @@
 import { getStoryblokApi } from "@/lib/storyblok";
-import { StoryblokStory } from '@storyblok/react/rsc';
+import { StoryblokStory } from "@storyblok/react/rsc";
 
 //Example of a static page
 export default async function Home() {
@@ -13,7 +13,12 @@ export default async function Home() {
 
 export async function fetchData() {
   const storyblokApi = getStoryblokApi();
-  return await storyblokApi.get("cdn/stories/home", {
-    version: "draft",
-  });
+  return await storyblokApi.get(
+    "cdn/stories/home",
+    {
+      version: "draft",
+      resolve_relations:
+        "ProductList.products,Hero2.products",
+    }
+  );
 }
