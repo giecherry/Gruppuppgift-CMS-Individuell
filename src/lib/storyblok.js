@@ -12,9 +12,9 @@ import Hero from "@/components/sb/Hero";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
+import ProductPage from '@/components/sb/ProductPage';
 
 export const components = {
-  // Add your components here
   page: Page,
   feature: Feature,
   grid: Grid,
@@ -24,6 +24,7 @@ export const components = {
   link: Link,
   footer: Footer,
   header: Header,
+  Products: ProductPage,
 };
 
 /**
