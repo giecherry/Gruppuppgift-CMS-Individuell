@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
-import ProductCard from "./ProductCard";
+import ProductCardHero2 from "./ProductCardHero2";
 import Teaser from "./Teaser";
 
 export default function Hero2({ blok }) {
@@ -59,7 +59,7 @@ export default function Hero2({ blok }) {
                   "transform, z-index, margin-bottom",
               }}
             >
-              <ProductCard
+              <ProductCardHero2
                 blok={product.content}
               />
             </div>

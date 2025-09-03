@@ -34,7 +34,7 @@ async function fetchStory(sbApi, slug) {
       {
         version: "draft",
         resolve_relations:
-          "ProductList.products,Hero2.products",
+          "ProductListHero2.products,Hero2.products",
       }
     );
     return data;
@@ -45,7 +45,7 @@ async function fetchStory(sbApi, slug) {
         {
           version: "published",
           resolve_relations:
-            "ProductList.products,Hero2.products",
+            "ProductListHero2.products,Hero2.products",
         }
       );
       return data;
