@@ -10,7 +10,7 @@ export default function LinkGrid({ blok }) {
   return (
     <div
       {...storyblokEditable(blok)}
-      className={`flex ${direction} gap-2`}
+      className={`flex ${direction} gap-2 text-black`}
     >
       {blok.title && (
         <div className="font-bold mb-2">
