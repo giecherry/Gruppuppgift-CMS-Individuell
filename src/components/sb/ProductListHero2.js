@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
-import ProductCard from "./ProductCard";
+import ProductCardHero2 from "./ProductCardHero2";
 
-export default function ProductList({ blok }) {
+export default function ProductListHero2({ blok }) {
   if (
     !blok.products ||
     !Array.isArray(blok.products)
@@ -13,7 +13,7 @@ export default function ProductList({ blok }) {
       className="grid grid-cols-1 md:grid-cols-3 gap-6"
     >
       {blok.products.map((product, idx) => (
-        <ProductCard
+        <ProductCardHero2
           blok={product.content}
           key={product.uuid || idx}
         />

@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import NextLink from "next/link";
 
-export default function ProductCard({ blok }) {
+export default function ProductCardHero2({ blok }) {
   if (!blok) return null;
   const mainImage =
     Array.isArray(blok.productImages) &&

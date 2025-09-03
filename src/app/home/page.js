@@ -18,7 +18,7 @@ export async function fetchData() {
     {
       version: "draft",
       resolve_relations:
-        "ProductList.products,Hero2.products",
+        "ProductListHero2.products,Hero2.products",
     }
   );
 }
