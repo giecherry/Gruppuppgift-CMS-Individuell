@@ -12,10 +12,12 @@ import Hero from "@/components/sb/Hero";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
-import ProductPage from '@/components/sb/ProductPage';
-import ProductCard from '@/components/sb/ProductCard';
-import ProductList from '@/components/sb/ProductList';
 
+import ProductPage from "@/components/sb/ProductPage";
+import ProductCard from "@/components/sb/ProductCard";
+import ProductList from "@/components/sb/ProductList";
+
+export const components = {
   page: Page,
   feature: Feature,
   grid: Grid,
@@ -27,7 +29,7 @@ import ProductList from '@/components/sb/ProductList';
   header: Header,
   Products: ProductPage,
   ProductCard: ProductCard,
-  ProductList: ProductList,     
+  ProductList: ProductList,
 };
 
 /**
