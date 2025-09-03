@@ -6,7 +6,9 @@ export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
 export default async function Page({ params }) {
-  const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
+  const slug = Array.isArray(params?.slug)
+    ? params.slug.join("/")
+    : "home";
   const sbApi = getStoryblokApi();
 
   const data = await fetchStory(sbApi, slug);
@@ -27,18 +29,30 @@ export default async function Page({ params }) {
 
 async function fetchStory(sbApi, slug) {
   try {
-    const { data } = await sbApi.get(`cdn/stories/${slug}`, { version: "draft" });
+    const { data } = await sbApi.get(
+      `cdn/stories/${slug}`,
+      {
+        version: "draft",
+        resolve_relations: "ProductList.products",
+      }
+    );
     return data;
   } catch {
     try {
-      const { data } = await sbApi.get(`cdn/stories/${slug}`, { version: "published" });
+      const { data } = await sbApi.get(
+        `cdn/stories/${slug}`,
+        {
+          version: "published",
+          resolve_relations:
+            "ProductList.products",
+        }
+      );
       return data;
     } catch {
       return null;
     }
   }
 }
-
 
 /* //Example of a dynamic page ex
 // about-us, blog/post-title, contact-us, etc.
