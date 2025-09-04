@@ -7,6 +7,7 @@ import StoryBlokProvider from "@/components/StoryBlokProvider";
 import Header from "@/components/sb/Header";
 import Footer from "@/components/sb/Footer";
 import Layout from "@/components/sb/Layout";
+import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,14 +24,17 @@ export const metadata = {
   description: "Storyblok + Next.js shop",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const h = await headers()
+  const pathName = h.get('x-pathname')
+  console.log("Pathname", pathName)
   return (
     <StoryBlokProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <Layout>{children}</Layout>
+          <Layout pathName={pathName}>{children}</Layout>
         </body>
       </html>
     </StoryBlokProvider>

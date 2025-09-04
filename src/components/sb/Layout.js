@@ -2,12 +2,14 @@ import { getStoryblokApi } from "@/lib/storyblok";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default async function Layout({ children }) {
+export default async function Layout({ children, pathName }) {
   const data = await fetchConfigSafe();
 
   const content = data?.story?.content;
   const headerBlok = Array.isArray(content?.header) ? content.header[0] : content?.header;
   const footerBlok = Array.isArray(content?.footer) ? content.footer[0] : content?.footer;
+
+  // const isProductPage = 
 
   return (
     <>
