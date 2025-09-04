@@ -25,8 +25,8 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const h = await headers()
-  const pathName = h.get('x-pathname')
+  const h = headers()
+  const pathName = h.get('x-pathname') || "/";
   console.log("Pathname", pathName)
   return (
     <StoryBlokProvider>

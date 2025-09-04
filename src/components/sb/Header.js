@@ -2,12 +2,13 @@
 
 import { storyblokEditable } from "@storyblok/react/rsc";
 import LinkGrid from "./LinkGrid";
+import { cn } from "@/utils/cn";
 
-export default function Header({ blok }) {
+export default function Header({ blok,darkNavbar }) {
   return (
     <header
       {...storyblokEditable(blok)}
-      className="sticky top-0 z-50 border-b border-gray-200 bg-blue-50"
+      className={cn("sticky top-0 z-50 border-b border-gray-200 bg-blue-50",{"bg-black text-white" : darkNavbar})}
     >
       <div className="max-w-5xl mx-auto flex flex-col gap-2 md:flex-row items-center px-4 py-2">
         {/* Logo */}
@@ -25,7 +26,7 @@ export default function Header({ blok }) {
         {Array.isArray(blok.linkgrid) &&
           blok.linkgrid.length > 0 && (
             <nav className="flex-1">
-              <LinkGrid blok={blok.linkgrid[0]} />
+              <LinkGrid whiteText={darkNavbar} blok={blok.linkgrid[0]} />
             </nav>
           )}
 

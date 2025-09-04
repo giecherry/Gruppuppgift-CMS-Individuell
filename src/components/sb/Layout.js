@@ -9,13 +9,16 @@ export default async function Layout({ children, pathName }) {
   const headerBlok = Array.isArray(content?.header) ? content.header[0] : content?.header;
   const footerBlok = Array.isArray(content?.footer) ? content.footer[0] : content?.footer;
 
-  // const isProductPage = 
+  console.log(pathName)
+
+  const x = pathName.startsWith("/products")
+
 
   return (
     <>
-      {headerBlok ? <Header blok={headerBlok} /> : <Header blok={{}} />}
+      {headerBlok ? <Header blok={headerBlok} darkNavbar={x} /> : <Header blok={{}} />}
       {children}
-      {footerBlok ? <Footer blok={footerBlok} /> : <Footer blok={{}} />}
+      {!x && (footerBlok ? <Footer blok={footerBlok} /> : <Footer blok={{}} />)}
     </>
   );
 }
