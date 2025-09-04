@@ -9,13 +9,17 @@ import Feature from "@/components/sb/Feature";
 import Grid from "@/components/sb/Grid";
 import DoesNotExist from "@/components/sb/DoesNotExist";
 import Hero from "@/components/sb/Hero";
-import Banner from "@/components/sb/Banner";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
 
+import ProductPage from "@/components/sb/ProductPage";
+import ProductCardHero2 from "@/components/sb/ProductCardHero2";
+import ProductListHero2 from "@/components/sb/ProductListHero2";
+import Hero2 from "@/components/sb/Hero2";
+import Banner from "@/components/sb/Banner";
+
 export const components = {
-  // Add your components here
   page: Page,
   feature: Feature,
   grid: Grid,
@@ -25,6 +29,8 @@ export const components = {
   link: Link,
   footer: Footer,
   header: Header,
+  Products: ProductPage,
+  Hero2: Hero2,
   banner: Banner,
 };
 
