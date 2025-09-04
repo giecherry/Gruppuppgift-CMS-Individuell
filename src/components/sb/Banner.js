@@ -10,7 +10,7 @@ export default function Banner({ blok }) {
       <img
         src={blok.banner_image?.filename}
         alt={blok.banner_image?.alt || "Banner image"}
-        className=" w-full h-full"
+        className=" w-full h-full fill"
       />
       {(blok.headline || blok.subheadline) && (
         <div className="flex flex-col items-center justify-center text-white bg-black bg-opacity-30">

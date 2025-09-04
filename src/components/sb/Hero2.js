@@ -16,7 +16,7 @@ export default function Hero2({ blok }) {
     blok.products.length === 0
   )
     return null;
-
+  console.log("btn", blok)
   return (
     <section
       {...storyblokEditable(blok)}
@@ -32,7 +32,7 @@ export default function Hero2({ blok }) {
       {blok.button_label && blok.button_url && (
         <div className="flex justify-center mb-8">
           <a
-            href={blok.button_url}
+            href={blok.button_url.cached_url}
             className="inline-block bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700 transition"
           >
             {blok.button_label}

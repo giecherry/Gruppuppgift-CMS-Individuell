@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Hero({ blok }) {
     console.log("HERO", blok)
 
-    let heroClasses = `h-[50vh] bg-gray p-6`
+    let heroClasses = `bg-gray p-6`
 
     /*`h-[50vh] bg-gray-100`*/
     /*`h-[50vh] bg-amber-400/25`*/
@@ -21,7 +21,7 @@ export default function Hero({ blok }) {
             <h1 style={{ textAlign: "center", fontSize: "3rem", font: "public sans", fontWeight: "bold", paddingTop: "3rem", marginBottom: "1rem", color: "#333", }}>
             {blok.title}
             </h1>
-            <h4 className="text-center text-sm text-gray-600 whitespace-wrap mt-2">                
+            <h4 className="text-center text-sm text-gray-600 whitespace-wrap mt-2 w-7/10 mx-auto">                
             {blok.text}
             </h4>
             {blok.button?.cached_url && (
