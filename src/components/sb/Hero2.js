@@ -20,7 +20,7 @@ export default function Hero2({ blok }) {
   return (
     <section
       {...storyblokEditable(blok)}
-      className="relative py-12 text-center"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center py-12 text-center"
     >
       {/* Teaser */}
       {teaserBlok &&
@@ -33,14 +33,14 @@ export default function Hero2({ blok }) {
         <div className="flex justify-center mb-8">
           <a
             href={blok.button_url}
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700 transition"
+            className="inline-block bg-[#d98ba3] text-white px-6 py-2 rounded shadow hover:bg-[#eab5c2] transition"
           >
             {blok.button_label}
           </a>
         </div>
       )}
       {/* Product Cards Row */}
-      <div className="flex justify-center items-end gap-6 max-w-4xl mx-auto">
+      <div className="flex justify-center items-end gap-12 max-w-4xl mx-auto">
         {blok.products
           .slice(0, 3)
           .map((product, idx) => (
