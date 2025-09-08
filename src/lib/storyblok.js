@@ -14,10 +14,9 @@ import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
 
 import ProductPage from "@/components/sb/ProductPage";
-import ProductCardHero2 from "@/components/sb/ProductCardHero2";
-import ProductListHero2 from "@/components/sb/ProductListHero2";
 import Hero2 from "@/components/sb/Hero2";
 import Banner from "@/components/sb/Banner";
+import AboutText from "@/components/sb/AboutText";
 
 export const components = {
   page: Page,
@@ -32,6 +31,7 @@ export const components = {
   Products: ProductPage,
   Hero2: Hero2,
   banner: Banner,
+  AboutText: AboutText
 };
 
 /**

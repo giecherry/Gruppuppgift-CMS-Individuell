@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import NextLink from "next/link";
 
-export default function Link({ blok }) {
+export default function Link({ blok, whiteText }) {
   if (!blok?.url) return null;
 
   const href = blok.url.cached_url || "#";
@@ -19,7 +19,7 @@ export default function Link({ blok }) {
           ? "noopener noreferrer"
           : undefined
       }
-      className="hover:underline text-sm"
+      className="text-sm hover:text-[#d98ba3] hover:font-extrabold"
     >
       {blok.label || href}
     </NextLink>

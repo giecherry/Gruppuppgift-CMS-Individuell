@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <>
-      <Header blok={headerBlok} className="bg-black text-white" />
+      {/* <Header blok={headerBlok} className="bg-black text-white" /> */}
       <ProductPage blok={blok} />
     </>
   );

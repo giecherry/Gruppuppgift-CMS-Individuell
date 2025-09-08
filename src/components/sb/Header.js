@@ -2,30 +2,44 @@
 
 import { storyblokEditable } from "@storyblok/react/rsc";
 import LinkGrid from "./LinkGrid";
+import { cn } from "@/utils/cn";
+import NextLink from "next/link";
 
-export default function Header({ blok }) {
+export default function Header({
+  blok,
+  darkNavbar,
+}) {
   return (
     <header
       {...storyblokEditable(blok)}
-      className="sticky top-0 z-50 border-b border-gray-200 bg-blue-50"
+      className={cn(
+        "sticky top-0 z-50 border-b border-gray-200 bg-[#fbd6e1]",
+        { "bg-black text-white": darkNavbar }
+      )}
     >
       <div className="max-w-5xl mx-auto flex flex-col gap-2 md:flex-row items-center px-4 py-2">
         {/* Logo */}
         {blok.logo && blok.logo.filename && (
-          <img
-            src={blok.logo.filename}
-            alt="Logo"
-            width={40}
-            height={40}
-            className="object-contain mr-4"
-          />
+          <NextLink href="/home" passHref>
+            <img
+              src={blok.logo.filename}
+              alt="Logo"
+              width={70}
+              height={70}
+              className="object-contain mr-4 hover:scale-110 cursor-pointer transition-transform duration-300"
+            />
+          </NextLink>
         )}
 
         {/* Navigation (LinkGrid) */}
         {Array.isArray(blok.linkgrid) &&
           blok.linkgrid.length > 0 && (
             <nav className="flex-1">
-              <LinkGrid blok={blok.linkgrid[0]} />
+              <LinkGrid
+                whiteText={darkNavbar}
+                blok={blok.linkgrid[0]}
+                className="font-extrabold"
+              />
             </nav>
           )}
 
@@ -37,18 +51,18 @@ export default function Header({ blok }) {
               blok.search_placeholder ||
               "Search..."
             }
-            className="px-3 py-2 rounded border border-gray-300 focus:outline-none"
+            className="px-3 py-2 rounded border-2 border-[#d98ba3] bg-[#fefefeb0] focus:outline-none"
             disabled
           />
           {/* Shopping cart placeholder */}
-          <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
+          <div className="w-10 h-10 bg-[#d98ba3] rounded flex items-center justify-center hover:bg-[#eab5c2]">
             <svg
               width="20"
               height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.6"
+              strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
