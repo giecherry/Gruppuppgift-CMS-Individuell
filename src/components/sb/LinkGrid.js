@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import Link from "./Link";
 
-export default function LinkGrid({ blok }) {
+export default function LinkGrid({ blok, whiteText }) {
   if (!blok || !blok.links) return null;
   const direction =
     blok.direction === "row"
@@ -19,6 +19,7 @@ export default function LinkGrid({ blok }) {
       )}
       {blok.links.map((linkBlok, idx) => (
         <Link
+          whiteText={whiteText}
           blok={linkBlok}
           key={linkBlok._uid || idx}
         />
