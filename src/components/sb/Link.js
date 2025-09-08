@@ -20,7 +20,7 @@ export default function Link({ blok, whiteText }) {
           ? "noopener noreferrer"
           : undefined
       }
-      className="hover:underline text-sm hover:text-[#d98ba3]"
+      className="text-sm hover:text-[#d98ba3] hover:font-extrabold"
     >
       {blok.label || href}
     </NextLink>

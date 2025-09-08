@@ -18,7 +18,7 @@ export default function Header({ blok,darkNavbar }) {
             alt="Logo"
             width={70}
             height={70}
-            className="object-contain mr-4 "
+            className="object-contain mr-4 hover:scale-110 cursor-pointer transition-transform duration-300"
           />
         )}
 
@@ -26,7 +26,7 @@ export default function Header({ blok,darkNavbar }) {
         {Array.isArray(blok.linkgrid) &&
           blok.linkgrid.length > 0 && (
             <nav className="flex-1">
-              <LinkGrid whiteText={darkNavbar} blok={blok.linkgrid[0]} />
+              <LinkGrid whiteText={darkNavbar} blok={blok.linkgrid[0]} className="font-extrabold" />
             </nav>
           )}
 
@@ -42,7 +42,7 @@ export default function Header({ blok,darkNavbar }) {
             disabled
           />
           {/* Shopping cart placeholder */}
-          <div className="w-10 h-10 bg-[#d98ba3] rounded flex items-center justify-center">
+          <div className="w-10 h-10 bg-[#d98ba3] rounded flex items-center justify-center hover:bg-[#eab5c2]">
             <svg
               width="20"
               height="20"
