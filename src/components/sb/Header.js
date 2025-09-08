@@ -121,7 +121,8 @@ export default function Header({
         { "bg-black text-white": darkNavbar }
       )}
     >
-      <div className="max-w-5xl mx-auto flex flex-col gap-2 md:flex-row items-center px-4 py-2">
+      {/* Use the same container as Footer */}
+      <div className="container mx-auto px-4 flex flex-col gap-2 md:flex-row items-center py-2">
         {/* Logo */}
         {blok.logo && blok.logo.filename && (
           <NextLink href="/home" passHref>

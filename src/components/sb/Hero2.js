@@ -26,11 +26,11 @@ export default function Hero2({ blok }) {
       {teaserBlok &&
         (teaserBlok.headline ||
           teaserBlok.description) && (
-          <Teaser blok={teaserBlok} />
+          <Teaser blok={teaserBlok}/>
         )}
       {/* Button */}
       {blok.button_label && blok.button_url && (
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-16">
           <a
             href={blok.button_url.cached_url}
             className="inline-block bg-[#d98ba3] text-white px-6 py-2 rounded shadow hover:bg-[#eab5c2] transition"
