@@ -3,7 +3,10 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import { cn } from "@/utils/cn";
 import NextLink from "next/link";
-import React from "react";
+import React, {
+  useState,
+  useEffect,
+} from "react";
 
 const menuData = [
   { label: "About us", href: "/about-me" },
@@ -109,10 +112,52 @@ function MenuItems({ items }) {
   );
 }
 
+const STORYBLOK_TOKEN =
+  process.env
+    .NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN;
+
 export default function Header({
   blok,
   darkNavbar,
 }) {
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  const [allProducts, setAllProducts] = useState(
+    []
+  );
+  const [loading, setLoading] = useState(false);
+
+  // Fetch all products from Storyblok
+  useEffect(() => {
+    async function fetchProducts() {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.storyblok.com/v2/cdn/stories?starts_with=products/&token=${STORYBLOK_TOKEN}`
+      );
+      const data = await res.json();
+      setAllProducts(data.stories || []);
+      setLoading(false);
+    }
+    fetchProducts();
+  }, []);
+
+  // Filter products on input
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    if (value.length > 1) {
+      setResults(
+        allProducts.filter((story) =>
+          story.content.productName
+            ?.toLowerCase()
+            .includes(value.toLowerCase())
+        )
+      );
+    } else {
+      setResults([]);
+    }
+  };
+
   return (
     <header
       {...storyblokEditable(blok)}
@@ -121,7 +166,6 @@ export default function Header({
         { "bg-black text-white": darkNavbar }
       )}
     >
-      {/* Use the same container as Footer */}
       <div className="container mx-auto px-4 flex flex-col gap-2 md:flex-row items-center py-2">
         {/* Logo */}
         {blok.logo && blok.logo.filename && (
@@ -170,8 +214,41 @@ export default function Header({
                 "Search..."
               }
               className="w-full pl-10 pr-3 py-2 rounded border-2 border-[#d98ba3] bg-[#fefefeb0] focus:outline-none"
-              disabled
+              value={search}
+              onChange={handleSearch}
             />
+            {/* Search results dropdown */}
+            {search.length > 1 && (
+              <ul className="absolute left-0 right-0 mt-1 bg-white border border-[#d98ba3] rounded shadow z-50 max-h-72 overflow-auto">
+                {loading && (
+                  <li className="px-4 py-2 text-gray-400">
+                    Loading...
+                  </li>
+                )}
+                {!loading &&
+                  results.length === 0 && (
+                    <li className="px-4 py-2 text-gray-400">
+                      No results
+                    </li>
+                  )}
+                {results.map((story) => (
+                  <li key={story.id}>
+                    <NextLink
+                      href={`/${story.full_slug}`}
+                      className="block px-4 py-2 hover:bg-[#fbd6e1] text-black"
+                      onClick={() => {
+                        setSearch("");
+                        setResults([]);
+                      }}
+                    >
+                      {story.content
+                        .productName ||
+                        story.name}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           {/* Shopping cart placeholder */}
           <div className="w-10 h-10 bg-[#d98ba3] rounded flex items-center justify-center hover:bg-[#eab5c2]">
