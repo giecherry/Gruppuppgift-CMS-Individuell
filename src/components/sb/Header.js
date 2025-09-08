@@ -1,9 +1,113 @@
 "use client";
 
 import { storyblokEditable } from "@storyblok/react/rsc";
-import LinkGrid from "./LinkGrid";
 import { cn } from "@/utils/cn";
 import NextLink from "next/link";
+import React from "react";
+
+const menuData = [
+  { label: "About us", href: "/about-me" },
+  {
+    label: "Products",
+    children: [
+      {
+        label: "Men",
+        href: "/shop",
+        children: [
+          {
+            label: "Sweaters",
+            href: "/products/men/sweaters",
+          },
+          {
+            label: "Tops",
+            href: "/products/men/tops",
+          },
+          {
+            label: "Jackets",
+            href: "/products/men/jackets",
+          },
+          {
+            label: "Bags",
+            href: "/products/men/bags",
+          },
+        ],
+      },
+      {
+        label: "Women",
+        href: "/shop",
+        children: [
+          {
+            label: "Sweaters",
+            href: "/products/women/sweaters",
+          },
+          {
+            label: "Tops",
+            href: "/products/women/tops",
+          },
+          {
+            label: "Jackets",
+            href: "/products/women/jackets",
+          },
+          {
+            label: "Bags",
+            href: "/products/women/bags",
+          },
+        ],
+      },
+      {
+        label: "Kids",
+        href: "/shop",
+        children: [
+          {
+            label: "Sweaters",
+            href: "/products/kids/sweaters",
+          },
+          {
+            label: "Tops",
+            href: "/products/kids/tops",
+          },
+          {
+            label: "Jackets",
+            href: "/products/kids/jackets",
+          },
+          {
+            label: "Bags",
+            href: "/products/kids/bags",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+function MenuItems({ items }) {
+  return (
+    <ul className="header-menu-root">
+      {items.map((item) => (
+        <li
+          key={item.label}
+          className="header-menu-item relative hover:bg-[#fbd6e1]"
+        >
+          {item.href ? (
+            <NextLink
+              href={item.href}
+              className="header-menu-link rounded"
+            >
+              {item.label}
+            </NextLink>
+          ) : (
+            <span className="header-menu-link rounded">
+              {item.label}
+            </span>
+          )}
+          {item.children && (
+            <MenuItems items={item.children} />
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function Header({
   blok,
@@ -31,17 +135,10 @@ export default function Header({
           </NextLink>
         )}
 
-        {/* Navigation (LinkGrid) */}
-        {Array.isArray(blok.linkgrid) &&
-          blok.linkgrid.length > 0 && (
-            <nav className="flex-1">
-              <LinkGrid
-                whiteText={darkNavbar}
-                blok={blok.linkgrid[0]}
-                className="font-extrabold"
-              />
-            </nav>
-          )}
+        {/* Multi-level menu */}
+        <nav className="flex-1">
+          <MenuItems items={menuData} />
+        </nav>
 
         {/* Search bar placeholder */}
         <div className="ml-auto flex items-center gap-4">
