@@ -12,6 +12,7 @@ const menuData = [
   { label: "About us", href: "/about-me" },
   {
     label: "Products",
+    href: "/shop",
     children: [
       {
         label: "Men",
