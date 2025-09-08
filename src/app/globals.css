@@ -28,7 +28,7 @@ body {
 
 .header-menu-root {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;

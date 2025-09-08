@@ -137,21 +137,42 @@ export default function Header({
         )}
 
         {/* Multi-level menu */}
-        <nav className="flex-1">
+        <nav>
           <MenuItems items={menuData} />
         </nav>
 
-        {/* Search bar placeholder */}
-        <div className="ml-auto flex items-center gap-4">
-          <input
-            type="text"
-            placeholder={
-              blok.search_placeholder ||
-              "Search..."
-            }
-            className="px-3 py-2 rounded border-2 border-[#d98ba3] bg-[#fefefeb0] focus:outline-none"
-            disabled
-          />
+        {/* Search bar */}
+        <div className="flex flex-1 items-center gap-4 ml-2">
+          <div className="relative w-full">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              {/* Search icon SVG */}
+              <svg
+                className="w-5 h-5 text-[#d98ba3]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line
+                  x1="21"
+                  y1="21"
+                  x2="16.65"
+                  y2="16.65"
+                />
+              </svg>
+            </span>
+            <input
+              type="text"
+              placeholder={
+                blok.search_placeholder ||
+                "Search..."
+              }
+              className="w-full pl-10 pr-3 py-2 rounded border-2 border-[#d98ba3] bg-[#fefefeb0] focus:outline-none"
+              disabled
+            />
+          </div>
           {/* Shopping cart placeholder */}
           <div className="w-10 h-10 bg-[#d98ba3] rounded flex items-center justify-center hover:bg-[#eab5c2]">
             <svg
