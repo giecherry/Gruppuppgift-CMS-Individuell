@@ -3,30 +3,43 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import LinkGrid from "./LinkGrid";
 import { cn } from "@/utils/cn";
+import NextLink from "next/link";
 
-export default function Header({ blok,darkNavbar }) {
+export default function Header({
+  blok,
+  darkNavbar,
+}) {
   return (
     <header
       {...storyblokEditable(blok)}
-      className={cn("sticky top-0 z-50 border-b border-gray-200 bg-[#fbd6e1]",{"bg-black text-white" : darkNavbar})}
+      className={cn(
+        "sticky top-0 z-50 border-b border-gray-200 bg-[#fbd6e1]",
+        { "bg-black text-white": darkNavbar }
+      )}
     >
       <div className="max-w-5xl mx-auto flex flex-col gap-2 md:flex-row items-center px-4 py-2">
         {/* Logo */}
         {blok.logo && blok.logo.filename && (
-          <img
-            src={blok.logo.filename}
-            alt="Logo"
-            width={70}
-            height={70}
-            className="object-contain mr-4 hover:scale-110 cursor-pointer transition-transform duration-300"
-          />
+          <NextLink href="/home" passHref>
+            <img
+              src={blok.logo.filename}
+              alt="Logo"
+              width={70}
+              height={70}
+              className="object-contain mr-4 hover:scale-110 cursor-pointer transition-transform duration-300"
+            />
+          </NextLink>
         )}
 
         {/* Navigation (LinkGrid) */}
         {Array.isArray(blok.linkgrid) &&
           blok.linkgrid.length > 0 && (
             <nav className="flex-1">
-              <LinkGrid whiteText={darkNavbar} blok={blok.linkgrid[0]} className="font-extrabold" />
+              <LinkGrid
+                whiteText={darkNavbar}
+                blok={blok.linkgrid[0]}
+                className="font-extrabold"
+              />
             </nav>
           )}
 

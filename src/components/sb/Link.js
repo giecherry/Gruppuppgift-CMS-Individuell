@@ -1,6 +1,5 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import NextLink from "next/link";
-import { cn } from "@/utils/cn";
 
 export default function Link({ blok, whiteText }) {
   if (!blok?.url) return null;
