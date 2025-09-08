@@ -60,7 +60,7 @@ export default function Hero2({ blok }) {
               }}
             >
               <ProductCardHero2
-                blok={product.content}
+                blok={product}
               />
             </div>
           ))}

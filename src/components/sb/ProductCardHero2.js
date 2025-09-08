@@ -6,8 +6,15 @@ export default function ProductCardHero2({
 }) {
   if (!blok) return null;
   const mainImage =
-    Array.isArray(blok.productImages) &&
-    blok.productImages[0];
+    Array.isArray(blok.content.productImages) &&
+    blok.content.productImages[0];
+
+  // Use full_slug or slug for the product link
+  const productSlug = blok.full_slug
+    ? `/${blok.full_slug}`
+    : blok.slug
+    ? `/${blok.slug}`
+    : "#";
 
   return (
     <div
@@ -15,11 +22,16 @@ export default function ProductCardHero2({
       className="bg-white rounded p-4 flex flex-col items-center w-full h-full shadow-[#eab5c2] shadow-md"
     >
       {mainImage && mainImage.filename && (
-        <img
-          src={mainImage.filename}
-          alt={blok.productName || "Product"}
-          className="w-full h-full object-cover rounded mb-2"
-        />
+        <NextLink href={productSlug}>
+          <img
+            src={mainImage.filename}
+            alt={
+              blok.content.productName ||
+              "Product"
+            }
+            className="w-full h-full object-cover rounded mb-2 cursor-pointer"
+          />
+        </NextLink>
       )}
     </div>
   );

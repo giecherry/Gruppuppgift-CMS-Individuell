@@ -14,7 +14,7 @@ export default function ProductListHero2({ blok }) {
     >
       {blok.products.map((product, idx) => (
         <ProductCardHero2
-          blok={product.content}
+          blok={product}
           key={product.uuid || idx}
         />
       ))}
