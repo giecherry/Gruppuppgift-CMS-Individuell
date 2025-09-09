@@ -1,13 +1,20 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import NextLink from "next/link";
 
-export default function Link({ blok, whiteText }) {
+export default function Link({
+  blok,
+  whiteText,
+}) {
   if (!blok?.url) return null;
 
-  const href = blok.url.cached_url || "#";
+  let href = blok.url.cached_url || "#";
   const isExternal =
     blok.url.linktype === "url" &&
     !href.startsWith("/");
+
+  if (!isExternal && !href.startsWith("/")) {
+    href = "/" + href;
+  }
 
   return (
     <NextLink

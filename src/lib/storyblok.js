@@ -12,11 +12,12 @@ import Hero from "@/components/sb/Hero";
 import Link from "@/components/sb/Link";
 import Footer from "@/components/sb/Footer";
 import Header from "@/components/sb/Header";
-
 import ProductPage from "@/components/sb/ProductPage";
 import Hero2 from "@/components/sb/Hero2";
 import Banner from "@/components/sb/Banner";
 import AboutText from "@/components/sb/AboutText";
+import Hero3 from '@/components/sb/Hero3';
+import ProductGrid from '@/components/sb/ProductGrid';
 
 export const components = {
   page: Page,
@@ -31,7 +32,9 @@ export const components = {
   Products: ProductPage,
   Hero2: Hero2,
   banner: Banner,
-  AboutText: AboutText
+  AboutText: AboutText,
+  Hero3: Hero3,
+  product_grid: ProductGrid,
 };
 
 /**
