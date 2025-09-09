@@ -1,29 +1,41 @@
-// src/app/sitemap.js
-
-import { StoryBlokUtils } from "@/utils/cms";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+import { getStoryblokApi } from "@/lib/storyblok"
 
 export default async function sitemap() {
-  try {
-    const pages = (await StoryBlokUtils.getStaticPaths()).filter(
-      (path) => path?.slug?.[0] !== "config" // Ta bort ev. interna sidor
-    );
+    try {
 
-    const sitemap = pages.map((page) => {
-      const slug = page?.slug?.filter((item) => item !== ""); // Rensa tomma slug-delar
-      const finalSlug = slug?.length > 0 ? slug.join("/") : ""; // Bygg slug som tex: "about/team"
+        const baseUrl = 'https://gruppuppgift-cms.vercel.app'
+        
+        const staticPaths = [
+            {
+                url: `${baseUrl}/home/`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly',
+                priority: 1
+            },
+            {
+                url: `${baseUrl}/about-us/`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly',
+                priority: 0.8
+            }
+        ]
 
-      return {
-        url: `${siteUrl}/${finalSlug}`, // Fullständig URL
-        lastModified: new Date(),       // Nuvarande datum
-        priority: 1.0                   // Vikt (för sökmotorer)
-      };
-    });
+        const storyblok = getStoryblokApi()
+        
+        const blogPosts = await storyblok.get("cdn/stories/", {
+            version: "published",
+            starts_with: "posts"
+        })
+        const dynamicPaths = blogPosts.data.stories.map(blogPost => ({
+            url: `${baseUrl}/posts/${blogPost.slug}/`,
+            lastModified: new Date(blogPost.updated_at) || new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.6
+        }))
+        
+        return [...staticPaths, ...dynamicPaths]
 
-    return sitemap;
-  } catch (error) {
-    console.error("Sitemap generation failed", error);
-    return [];
-  }
+    } catch (error) {
+        return []
+    }
 }
