@@ -121,6 +121,7 @@ export default function Header({
   blok,
   darkNavbar,
 }) {
+  //!Implementera en sökfunktion som tillåter användare att söka efter produkter på sidan (Client calls)
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [allProducts, setAllProducts] = useState(
@@ -181,6 +182,7 @@ export default function Header({
           </NextLink>
         )}
 
+        //!Implementera en meny med flera nivåer för navigering mellan olika sidor på webbplatsen.
         {/* Multi-level menu */}
         <nav>
           <MenuItems items={menuData} />
