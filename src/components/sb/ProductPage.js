@@ -5,6 +5,7 @@ const COLOR_MAP = {
   black: "#000000",
   brown: "#8B5A2B",
   red: "#E11D48",
+  pink: "#e11dd1ff"
 };
 
 export default function ProductPage({ blok }) {
