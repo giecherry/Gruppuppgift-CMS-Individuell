@@ -1,4 +1,27 @@
-# Next.js with Storyblok - Starter code
+## Individuell uppgift kommentarer
+
+### VG-krav och mina lösningar
+
+**1. Meny med flera nivåer**
+- Jag har implementerat en dynamisk meny med flera nivåer för navigering mellan olika sidor.
+- På grund av begränsningar i Tailwind CSS (framförallt med group-hover och nested dropdowns) valde jag att använda klassisk CSS för att få till korrekt hover-beteende och styling.
+- Menyn visar underkategorier på hover, men eftersom filtrering och dynamisk routing till kategorisidor inte var på plats i projektet, leder undermenyerna till statiska länkar. Detta kan enkelt byggas ut vid vidare utveckling.
+
+**2. Sökfunktion (client calls)**
+- Sökfunktionen hämtar alla produkter från Storyblok via API-anrop på klientsidan.
+- Resultaten filtreras direkt i React när användaren skriver i sökfältet.
+- På grund av begränsad tid och att det inte fanns någon dedikerad sökresultatsida eller shop-lista med filtrering, visas resultaten direkt i en dropdown under sökfältet i headern. Användaren kan klicka på ett resultat för att gå direkt till produktsidan.
+
+**3. Dynamisk bakgrundsfärg i Hero-komponenten**
+- Jag har lagt till stöd för att redaktören kan ange bakgrundsfärg för Hero-blocket via ett extra textfält (`backgroundColor`) i Storyblok.
+- Eftersom jag arbetar i samma space som gruppuppgiften och inte ville påverka befintligt innehåll, är fältet valfritt och har en fallback-färg om inget värde anges. Detta gör att gamla sidor fungerar som tidigare utan ändringar.
+
+### Begränsningar och vidareutveckling
+
+- Jag har anpassat lösningarna för att inte påverka gruppuppgiftens befintliga struktur eller innehåll.
+- Vidareutveckling kan inkludera dynamisk filtrering i menyn, en dedikerad sökresultatsida och förbättrad hantering av färgval i Hero-komponenten (t.ex. färg-picker i Storyblok).
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -318,3 +341,6 @@ For more information about the technologies used:
 - [Storyblok Documentation](https://www.storyblok.com/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [React Documentation](https://react.dev)
+
+
+
