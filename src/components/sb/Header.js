@@ -182,7 +182,8 @@ export default function Header({
           </NextLink>
         )}
 
-        //!Implementera en meny med flera nivåer för navigering mellan olika sidor på webbplatsen.
+        {/* Implementera en meny med flera nivåer för navigering mellan olika sidor på webbplatsen. */}
+        
         {/* Multi-level menu */}
         <nav>
           <MenuItems items={menuData} />
