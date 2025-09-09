@@ -2,16 +2,17 @@ import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
 
 export default function Hero({ blok }) {
+
+//!Implementera i Hero komponenten dynamik så jag som redaktör har möjlighet att ändra backgrundfärg för hela blocket.
+
+  const bgColor =
+    blok.backgroundColor || "#f5f5f5"; 
+
   return (
     <div
       {...storyblokEditable(blok)}
-      className="bg-gray p-6"
-      style={{
-        backgroundImage: blok?.background_image
-          ?.filename
-          ? `url(${blok.background_image.filename})`
-          : undefined,
-      }}
+      className="p-6"
+      style={{ backgroundColor: bgColor }}
     >
       <div className="container mx-auto px-4 max-w-screen-xl">
         <h1 className="text-center text-[3rem] font-bold pt-12 mb-4 text-[#333] font-sans">
